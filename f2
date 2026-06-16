@@ -1,6 +1,7 @@
 hello this data from local pc
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 aryan bansode this side work with as on the model of framewak 
 =======
 
@@ -8,3 +9,6 @@ aryan bansode this side work with as on the model of framewak
 >
 -p
 >>>>>>> 325825b (data from local)
+=======
+aryan bansode this side work with as on the model of framewak 
+>>>>>>> 62ee455 (conflict resolved)
