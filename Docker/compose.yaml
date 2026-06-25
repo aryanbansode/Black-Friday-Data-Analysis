@@ -3,50 +3,28 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
-    networks:
-      - webnet
 
   tomcat-app:
     image: aryanbansode/b20:myhttpd
     ports:
       - "8080:8080"
-    networks:
-      - webnet
 
-  db:
-    image: mysql:5.7
+  mysql-db:
+    image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: 1234
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - webnet
-
-  mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: mydatabase
     ports:
       - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      - webnet
 
   httpd:
     image: aryanbansode/b20:myhttpd
     ports:
-      - "8081:80"
+      - "81:80"
     volumes:
-      - ./myhttpd:/usr/local/apache2/htdocs/
-    networks:
-      - webnet
-
-
-networks:
-  webnet:
-
+      - /data:/usr/local/apache2/htdocs/
 volumes:
-  db_data:
-  mysql_data:
+  data:
+ 
+
+
