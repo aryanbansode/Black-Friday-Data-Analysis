@@ -1,19 +1,15 @@
-FROM ubuntu:22.04
+FROM alpine:latest
 
-RUN apt update && \
-    apt install openjdk-17-jdk -y
+RUN apk update && apk add --no-cache bash curl git
+ADD https://downloads.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.tar.gz /tmp/
 
-ADD https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.23/bin/apache-tomcat-11.0.23.tar.gz /opt
+ENV project=devops
 
-WORKDIR /opt
+WORKDIR /var/www/localhost/htdocs
 
-RUN tar -xvzf apache-tomcat-11.0.23.tar.gz
+COPY index.html /var/www/localhost/htdocs/index.html
 
-COPY index.html /opt/apache-tomcat-11.0.23/webapps/ROOT/index.html
+EXPOSE 80
 
-ENV name=aryan
-ENV age=22
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
-EXPOSE 8080
-
-CMD ["/opt/apache-tomcat-11.0.23/bin/catalina.sh", "run"]
