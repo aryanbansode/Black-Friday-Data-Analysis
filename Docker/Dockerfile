@@ -1,7 +1,6 @@
 FROM alpine:latest
 
-RUN apk update && apk add --no-cache bash curl git
-ADD https://downloads.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.tar.gz /tmp/
+RUN apk update && apk add --no-cache bash curl git apache2
 
 ENV project=devops
 
@@ -11,5 +10,4 @@ COPY index.html /var/www/localhost/htdocs/index.html
 
 EXPOSE 80
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
-
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
