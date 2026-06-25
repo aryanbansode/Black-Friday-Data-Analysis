@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-RUN apt-get install java-17-openjdk -y
+RUN sudo apt install openjdk-17-jdk -y
 ADD https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.23/bin/apache-tomcat-11.0.23.tar.gz /opt
 
 
