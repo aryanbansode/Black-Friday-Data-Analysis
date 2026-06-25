@@ -5,6 +5,7 @@ services:
       - "80:80"
     networks:
       - webnet
+
   tomcat-app:
     image: aryanbansode/b20:myhttpd
     ports:
@@ -26,18 +27,26 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: mydatabase
-    Ports:
+    ports:
       - "3306:3306"
     volumes:
-      -mysql_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     networks:
       - webnet
+
   httpd:
     image: aryanbansode/b20:myhttpd
     ports:
       - "8081:80"
-
     volumes:
       - ./myhttpd:/usr/local/apache2/htdocs/
     networks:
       - webnet
+
+
+networks:
+  webnet:
+
+volumes:
+  db_data:
+  mysql_data:
