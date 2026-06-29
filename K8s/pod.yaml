@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod4
+  labels:
+    app: myapp4
+spec:
+  containers:
+  - name: mycontainer4
+    image: aryanbansode/b20:myhttpd
+    ports:
+    - containerPort: 80
