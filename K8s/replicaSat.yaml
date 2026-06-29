@@ -1,12 +1,15 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: ReplicaSet
+
 metadata:
   name: myreplicaset4
   labels:
     app: myapp4
     department: DevOps
+
 spec:
   replicas: 3
+
   selector:
     matchLabels:
       app: myapp4
@@ -19,10 +22,10 @@ spec:
 
   template:
     metadata:
-      name: mypod4
       labels:
         app: myapp4
         department: DevOps
+
     spec:
       containers:
       - name: mycontainer4
