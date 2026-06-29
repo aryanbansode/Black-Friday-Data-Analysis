@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Replicaset
+metadata:
+  name: myreplicaset4
+  labels:
+    app: myapp4
+    department: DevOps
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp4
+      department: DevOps
+    matchExpressions:
+      - key: department
+        operator: In
+        values:
+          - DevOps
+
+  template:
+    metadata:
+      name: mypod4
+      labels:
+        app: myapp4
+        department: DevOps
+    spec:
+      containers:
+      - name: mycontainer4
+        image: nginx
+        ports:
+        - containerPort: 80
