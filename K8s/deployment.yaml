@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
       - name: mycontainer4
-        image: nginx
+        image: httpd
         ports:
         - containerPort: 80
