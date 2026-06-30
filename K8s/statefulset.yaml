@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mystatefulset
+  labels:
+    app: myapp
+    department: DevOps
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      department: DevOps
+  template:
+    metadata:
+      name: mystatefulset
+      labels:
+        app: myapp
+        department: DevOps
+    spec:
+      containers:
+      - name: mariadb
+        image: mariadb
+        ports:
+          - name: mysql
+            containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: myconfigmap
+                key: password
