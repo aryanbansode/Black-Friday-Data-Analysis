@@ -4,3 +4,4 @@ metadata:
   name: myconfigmap
 data:
   password: admin123
+  -
