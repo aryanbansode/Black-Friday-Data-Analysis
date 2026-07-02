@@ -2,13 +2,17 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: mypod4
-  Namespace: mynamespace4
-  labels:
-    app: myapp4
 spec:
   containers:
   - name: mycontainer4
-    image: aryanbansode/b20:myhttpd
+    image: nginx
+    volumeMounts:
+    - name: myvolume
+      mountPath: /usr/local/apache2/htdocs/
+  volumes:
+  - name: myvolume
+    persistentVolumeClaim:
+      claimName: mypvc
     ports:
     - containerPort: 80
 
